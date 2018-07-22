@@ -1,4 +1,9 @@
 package pigLatin.grandcircus;
+/*
+ * Cameron Barnes 7/20/2018
+ * Grand Circus Bootcamp Q3
+ * 
+ */
 
 import java.util.Scanner;
 
@@ -55,23 +60,24 @@ public class PigLatin {
 		// Array to store all vowels
 		char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 
-		// For loop to iterate through the vowels array and assigning that vowel to (i)
+		// For loop to iterate through the vowels array and assigning that vowel to the
+		// index of (i)
 		for (int i = 0; i < vowels.length; i++) {
 
 			// Conditional to check if first letter is vowel or not
 			if (firstLetter == vowels[i]) {
-				return word + "way";
+				tempWord += "way";
+				return tempWord;
+
 			}
 
 		}
 
-		// Start word at first vowal
-		word = word.substring(1);
-		// Add consonants to end of word plus -ay
-		word += firstLetter + "ay";
+		tempWord = tempWord.substring(1);
+		tempWord += firstLetter + "ay";
 
 		// return translated word
-		return word;
+		return tempWord;
 
 	}
 
