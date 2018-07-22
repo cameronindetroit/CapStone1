@@ -19,26 +19,28 @@ public class PigLatin {
 
 		// Class variables
 		String userInput;
-		String translatedWord;
+		String translatedSentence;
 		String continueYesOrNo;
+
 		// Scanner
 		Scanner scnr = new Scanner(System.in);
 
+		// Loop program to continue if user chooses
 		do {
 
 			// Introduction to program
 			System.out.println("Welcome to the Pig Latin Transaltor!");
 
-			// Prompt user for word to translate
-			System.out.println("Enter a word to be translated");
+			// Prompt user for word/Sentence to translate
+			System.out.println("Enter a word/sentence to be translated");
 			userInput = scnr.nextLine();
 
-			// output UserTranslated word
-			translatedWord = pigLatinTranslator(userInput);
-			System.out.println(translatedWord);
+			// Test Translated sentence
+			translatedSentence = sentanceSeparator(userInput);
+			System.out.println(translatedSentence);
 
 			// Ask if user would like to continue
-			System.out.println("\nRoll again? Y/N");
+			System.out.println("\nTry again? Y/N");
 			continueYesOrNo = scnr.nextLine();
 
 		} while (continueYesOrNo.trim().toLowerCase().startsWith("y"));
@@ -69,15 +71,42 @@ public class PigLatin {
 				tempWord += "way";
 				return tempWord;
 
-			}
+			} else if (firstLetter != vowels[i]) {
 
+				// Find first vowel in word
+
+				// remove all consonants before vowel
+
+				// reconstruct word to pigLatin
+
+			}
 		}
 
 		tempWord = tempWord.substring(1);
 		tempWord += firstLetter + "ay";
 
-		// return translated word
 		return tempWord;
+
+	}
+
+	// Method to convert user input into individual strings to be translated and
+	// passed through the PigLatin Translator
+	private static String sentanceSeparator(String sentence) {
+
+		String tempSentence = sentence;
+		String pigLatinSentence = " ";
+		String individualWord;
+		String[] seperatedWords = tempSentence.split(" ");
+
+		for (String word : seperatedWords) {
+
+			individualWord = word;
+			individualWord = pigLatinTranslator(individualWord);
+			pigLatinSentence += individualWord + " ";
+
+		}
+
+		return pigLatinSentence.trim();
 
 	}
 
