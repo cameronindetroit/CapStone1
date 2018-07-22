@@ -56,34 +56,50 @@ public class PigLatin {
 	private static String pigLatinTranslator(String word) {
 		// Convert word to lowercase
 		String tempWord = word.toLowerCase();
-		// Locate first letter in word
+
+		// test word to find index of vowel to lowercase
+		int testWord = tempWord.length();
+
+		// variable used to locate first letter in word
 		char firstLetter = tempWord.charAt(0);
+
+		// variable Locate first vowel in word
+		char vowel;
 
 		// Array to store all vowels
 		char[] vowels = { 'a', 'e', 'i', 'o', 'u' };
 
+		// Part 1:
 		// For loop to iterate through the vowels array and assigning that vowel to the
 		// index of (i)
 		for (int i = 0; i < vowels.length; i++) {
 
 			// Conditional to check if first letter is vowel or not
 			if (firstLetter == vowels[i]) {
-				tempWord += "way";
+				tempWord = tempWord += "way";
 				return tempWord;
 
-			} else if (firstLetter != vowels[i]) {
+			}
 
-				// Find first vowel in word
+		}
 
-				// remove all consonants before vowel
+		// Part 2:
+		// For loop to iterate through word to find first vowel
+		for (int j = 0; j < testWord; j++) {
 
-				// reconstruct word to pigLatin
+			vowel = tempWord.charAt(j);
+
+			// Conditional to check if word contains a vowel and it's index
+			if (vowel == 'a' || vowel == 'e' || vowel == 'i' || vowel == 'o' || vowel == 'u') {
+
+				String firstPartOfWord = tempWord.substring(0, j);
+				String secondPartOfWord = tempWord.substring(j);
+				String finalString = secondPartOfWord + firstPartOfWord + "ay";
+				tempWord = finalString;
+				return tempWord;
 
 			}
 		}
-
-		tempWord = tempWord.substring(1);
-		tempWord += firstLetter + "ay";
 
 		return tempWord;
 
